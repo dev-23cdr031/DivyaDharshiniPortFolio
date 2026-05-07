@@ -10,11 +10,19 @@ const seededRandom = (seed: number) => {
   return value - Math.floor(value)
 }
 
+const stableFloat = (value: number, digits = 4) => Number(value.toFixed(digits))
+
 // ============================================================================
 // PREMIUM BACKGROUND SYSTEM
 // ============================================================================
 
 function PremiumCinematicBackground() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <>
       {/* Animated Floating Gradient Blobs */}
@@ -77,47 +85,52 @@ function PremiumCinematicBackground() {
       </div>
 
       {/* Animated Particle Field */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        {Array.from({ length: 25 }).map((_, i) => {
-          const duration = seededRandom(i + 1) * 20 + 25
-          const delay = seededRandom(i + 26) * 5
-          const size = seededRandom(i + 51) * 2.5 + 0.5
-          const colors = [
-            'rgba(6, 182, 212, 0.6)',
-            'rgba(14, 165, 233, 0.5)',
-            'rgba(168, 85, 247, 0.4)',
-            'rgba(236, 72, 153, 0.3)',
-          ]
-          const color = colors[Math.floor(seededRandom(i + 76) * colors.length)]
+      {mounted && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+          {Array.from({ length: 25 }).map((_, i) => {
+            const duration = seededRandom(i + 1) * 20 + 25
+            const delay = seededRandom(i + 26) * 5
+            const size = stableFloat(seededRandom(i + 51) * 2.5 + 0.5)
+            const colors = [
+              'rgba(6, 182, 212, 0.6)',
+              'rgba(14, 165, 233, 0.5)',
+              'rgba(168, 85, 247, 0.4)',
+              'rgba(236, 72, 153, 0.3)',
+            ]
+            const color = colors[Math.floor(seededRandom(i + 76) * colors.length)]
+            const left = `${stableFloat(seededRandom(i + 101) * 100)}%`
+            const top = `${stableFloat(seededRandom(i + 126) * 100)}%`
+            const sizePx = `${size}px`
 
-          return (
-            <motion.div
-              key={i}
-              className="absolute rounded-full blur-sm"
-              style={{
-                width: size,
-                height: size,
-                background: color,
-                left: `${seededRandom(i + 101) * 100}%`,
-                top: `${seededRandom(i + 126) * 100}%`,
-                boxShadow: `0 0 ${size * 2}px ${color}`,
-              }}
-              animate={{
-                y: [0, -200, -400],
-                x: [0, Math.sin(i) * 100, Math.cos(i) * 100],
-                opacity: [0, 0.7, 0],
-              }}
-              transition={{
-                duration,
-                repeat: Infinity,
-                delay,
-                ease: 'linear',
-                type: 'tween',
-              }}
-            />
-          )
-        })}
-      </div>
+            return (
+              <motion.div
+                key={i}
+                className="absolute rounded-full blur-sm"
+                style={{
+                  width: sizePx,
+                  height: sizePx,
+                  background: color,
+                  left,
+                  top,
+                  boxShadow: `0 0 ${stableFloat(size * 2)}px ${color}`,
+                }}
+                animate={{
+                  y: [0, -200, -400],
+                  x: [0, Math.sin(i) * 100, Math.cos(i) * 100],
+                  opacity: [0, 0.7, 0],
+                }}
+                transition={{
+                  duration,
+                  repeat: Infinity,
+                  delay,
+                  ease: 'linear',
+                  type: 'tween',
+                }}
+              />
+            )
+          })}
+        </div>
+      )}
 
       {/* Subtle Animated Grid */}
       <div className="absolute inset-0 opacity-[0.08] pointer-events-none -z-10">
@@ -267,7 +280,7 @@ function TiltProfileCard({ children }: { children: React.ReactNode }) {
       className="relative"
     >
       <motion.div
-        className="relative p-6 rounded-2xl bg-gradient-to-br from-slate-800/70 to-slate-900/80 border border-cyan-400/40 backdrop-blur-md overflow-hidden group"
+        className="relative overflow-hidden rounded-2xl border border-cyan-200/70 bg-white/90 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.10)] backdrop-blur-md transition-colors duration-300 group dark:border-cyan-300/35 dark:bg-[#0f1b2d]/92 dark:shadow-[0_22px_70px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.06)]"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -363,7 +376,7 @@ function PremiumCard({
       className="group relative"
     >
       <motion.div
-        className={`relative p-4 rounded-lg bg-gradient-to-br from-slate-800/50 to-slate-900/60 border ${borderColor} ${hoverBorder} backdrop-blur-md transition-all duration-300 overflow-hidden`}
+        className={`relative overflow-hidden rounded-lg border ${borderColor} ${hoverBorder} bg-white/88 p-4 shadow-[0_14px_40px_rgba(15,23,42,0.08)] backdrop-blur-md transition-all duration-300 dark:bg-[#101827]/92 dark:shadow-[0_18px_44px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.05)]`}
         whileHover={{
           y: -8,
           boxShadow: `0 20px 40px rgba(6, 182, 212, 0.15)`,
@@ -575,7 +588,7 @@ export function About() {
   return (
     <AnimatedSection
       id="about"
-      className="relative bg-gradient-to-b from-background via-background/98 to-background py-16 lg:py-20 overflow-hidden"
+      className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-cyan-50/45 py-16 lg:py-20 dark:from-background dark:via-background/98 dark:to-background"
       contentClassName="relative"
     >
       <PremiumCinematicBackground />
@@ -603,10 +616,10 @@ export function About() {
 
             {/* Intro Card */}
             <PremiumCard delay={0.1} accent="cyan">
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <p className="text-sm leading-relaxed text-muted-foreground dark:text-slate-200/90">
                 I’m Divya Dharshini S, a passionate and dedicated aspiring software developer with a strong enthusiasm for web development, modern technologies, and innovative digital solutions. As a Smart India Hackathon (SIH) Finalist, I have gained valuable experience in problem-solving, teamwork, and building impactful technology-driven solutions in competitive environments. I enjoy transforming ideas into interactive and user-friendly applications while continuously strengthening my technical expertise in React, HTML, CSS, Bootstrap, Python, MySQL, and modern UI/UX design. Along with technical knowledge, I possess strong leadership, communication, and collaboration skills, enabling me to work effectively within teams, manage responsibilities confidently, and contribute positively to project development and execution.
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground dark:text-slate-200/90">
                 I am deeply interested in building technology that creates real-world impact and enhances user experiences. Over time, I have worked on multiple projects ranging from responsive web platforms to innovative solutions such as Hybrid Renewable Energy Orchestration systems and sales data analysis platforms. I believe that combining creativity, consistency, leadership, and technical knowledge is the key to building meaningful digital products. I continuously explore emerging technologies, improve my problem-solving abilities, and challenge myself through innovation, teamwork, and continuous learning. My goal is to grow into a skilled full-stack developer and technology professional who contributes to future-focused projects while creating impactful and inspiring digital experiences.
               </p>
             </PremiumCard>
@@ -638,12 +651,12 @@ export function About() {
                   { cat: 'DevOps', items: ['Docker', 'Kubernetes', 'AWS'] },
                 ].map((group, i) => (
                   <PremiumCard key={group.cat} delay={0.15 + i * 0.08} accent="purple">
-                    <p className="text-xs font-bold text-purple-300 mb-3">{group.cat}</p>
+                    <p className="mb-3 text-xs font-bold text-violet-700 dark:text-purple-300">{group.cat}</p>
                     <div className="flex flex-wrap gap-2">
                       {group.items.map((item, idx) => (
                         <motion.span
                           key={item}
-                          className="px-2 py-1 rounded text-xs bg-purple-500/20 border border-purple-400/40 text-purple-200"
+                          className="rounded border border-violet-200 bg-violet-50 px-2 py-1 text-xs font-medium text-violet-700 dark:border-purple-400/40 dark:bg-purple-500/20 dark:text-purple-200"
                           whileHover={{
                             scale: 1.1,
                             boxShadow: '0 0 10px rgba(168, 85, 247, 0.5)',
@@ -705,8 +718,8 @@ export function About() {
                     >
                       {achievement.icon}
                     </motion.div>
-                    <p className="text-xs font-bold text-green-300">{achievement.title}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{achievement.desc}</p>
+                    <p className="text-xs font-bold text-emerald-700 dark:text-green-300">{achievement.title}</p>
+                    <p className="mt-1 text-xs text-muted-foreground dark:text-slate-300/85">{achievement.desc}</p>
                   </PremiumCard>
                 ))}
               </div>
@@ -739,19 +752,19 @@ export function About() {
                     { label: 'College Mail ID', value: 'divyadharshinis.23csd@kongu.edu' },
                     { label: 'Personal Mail ID', value: 'divyadharshinis3282@gmail.com' },
                     { label: 'HSC Percentage', value: 'Pass' },
-                    { label: 'SSC Percentage', value: '93.16%' },
+                    { label: 'SSLC Percentage', value: '93.16%' },
                     { label: 'College', value: 'KONGU ENGINEERING COLLEGE' },
                     { label: 'Current CGPA', value: '8.59' },
                     { label: 'Languages Known', value: 'ENGLISH, TAMIL, HINDI' },
                   ].map((detail) => (
                     <div
                       key={detail.label}
-                      className="rounded-lg border border-blue-400/25 bg-blue-500/10 px-3 py-2"
+                      className="rounded-lg border border-sky-200 bg-sky-50/80 px-3 py-2 shadow-sm dark:border-blue-400/25 dark:bg-blue-500/10 dark:shadow-none"
                     >
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-blue-300/80">
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-sky-700/80 dark:text-blue-300/80">
                         {detail.label}
                       </p>
-                      <p className="mt-1 break-words text-sm font-semibold text-slate-100">
+                      <p className="mt-1 break-words text-sm font-semibold text-slate-900 dark:text-slate-100">
                         {detail.value}
                       </p>
                     </div>

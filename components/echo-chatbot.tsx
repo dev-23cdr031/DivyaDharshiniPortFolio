@@ -77,29 +77,29 @@ export function EchoChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 18, scale: 0.94 }}
             transition={{ duration: 0.22, ease: 'easeOut' as const }}
-            className="mb-4 flex h-[520px] w-[min(calc(100vw-2.5rem),380px)] flex-col overflow-hidden rounded-2xl border border-cyan-200/15 bg-[#071027]/95 shadow-[0_24px_90px_rgba(0,0,0,0.42),0_0_40px_rgba(34,211,238,0.14)] backdrop-blur-2xl"
+            className="mb-4 flex h-[520px] w-[min(calc(100vw-2.5rem),380px)] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/95 shadow-[0_24px_70px_rgba(15,23,42,0.18)] backdrop-blur-2xl dark:border-cyan-200/15 dark:bg-[#071027]/95 dark:shadow-[0_24px_90px_rgba(0,0,0,0.42),0_0_40px_rgba(34,211,238,0.14)]"
           >
-            <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.055] px-4 py-3">
+            <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50/90 px-4 py-3 dark:border-white/10 dark:bg-white/[0.055]">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-300 to-blue-500 text-slate-950 shadow-[0_0_24px_rgba(34,211,238,0.25)]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-300 to-blue-500 text-slate-950 shadow-[0_10px_24px_rgba(14,165,233,0.24)] dark:shadow-[0_0_24px_rgba(34,211,238,0.25)]">
                   <Bot className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-black text-white">Dev Chatbot</h3>
-                  <p className="text-xs text-cyan-100/75">Responds with Divya Dharshini&apos;s profile</p>
+                  <h3 className="text-sm font-black text-slate-950 dark:text-white">Dev Chatbot</h3>
+                  <p className="text-xs text-slate-500 dark:text-cyan-100/75">Responds with Divya Dharshini&apos;s profile</p>
                 </div>
               </div>
               <button
                 type="button"
                 aria-label="Close chatbot"
                 onClick={() => setIsOpen(false)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-slate-200 transition hover:border-cyan-300/45 hover:bg-cyan-300/12 hover:text-white"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:border-cyan-300/70 hover:bg-cyan-50 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.06] dark:text-slate-200 dark:hover:border-cyan-300/45 dark:hover:bg-cyan-300/12 dark:hover:text-white"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
 
-            <div className="flex-1 space-y-3 overflow-y-auto p-4">
+            <div className="flex-1 space-y-3 overflow-y-auto bg-gradient-to-b from-white to-slate-50 p-4 dark:from-transparent dark:to-transparent">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -108,8 +108,8 @@ export function EchoChatbot() {
                   <div
                     className={`max-w-[82%] rounded-2xl px-4 py-3 text-sm leading-6 shadow-lg ${
                       message.role === 'user'
-                        ? 'bg-cyan-300 text-slate-950'
-                        : 'border border-cyan-200/10 bg-white/[0.07] text-slate-100'
+                        ? 'bg-cyan-500 text-white shadow-cyan-500/20 dark:bg-cyan-300 dark:text-slate-950'
+                        : 'border border-slate-200 bg-white text-slate-700 shadow-slate-200/70 dark:border-cyan-200/10 dark:bg-white/[0.07] dark:text-slate-100 dark:shadow-lg'
                     }`}
                   >
                     {message.text}
@@ -118,7 +118,7 @@ export function EchoChatbot() {
               ))}
             </div>
 
-            <div className="border-t border-white/10 bg-slate-950/45 p-3">
+            <div className="border-t border-slate-200 bg-white p-3 dark:border-white/10 dark:bg-slate-950/45">
               <div className="flex items-end gap-2">
                 <textarea
                   value={input}
@@ -131,13 +131,13 @@ export function EchoChatbot() {
                   }}
                   rows={2}
                   placeholder="Type text..."
-                  className="min-h-[46px] flex-1 resize-none rounded-xl border border-cyan-200/15 bg-white/[0.06] px-3 py-3 text-sm text-white outline-none transition placeholder:text-slate-400 focus:border-cyan-300/55 focus:ring-2 focus:ring-cyan-300/20"
+                  className="min-h-[46px] flex-1 resize-none rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-400/70 focus:bg-white focus:ring-2 focus:ring-cyan-300/20 dark:border-cyan-200/15 dark:bg-white/[0.06] dark:text-white dark:focus:border-cyan-300/55"
                 />
                 <button
                   type="button"
                   onClick={sendMessage}
                   disabled={!canSend}
-                  className="inline-flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-xl bg-cyan-300 text-slate-950 shadow-[0_0_24px_rgba(34,211,238,0.22)] transition hover:bg-cyan-200 disabled:cursor-not-allowed disabled:opacity-45"
+                  className="inline-flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-xl bg-cyan-500 text-white shadow-[0_12px_26px_rgba(14,165,233,0.25)] transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-45 dark:bg-cyan-300 dark:text-slate-950 dark:shadow-[0_0_24px_rgba(34,211,238,0.22)] dark:hover:bg-cyan-200"
                   aria-label="Send message"
                 >
                   <Send className="h-5 w-5" />
@@ -151,7 +151,7 @@ export function EchoChatbot() {
       <button
         type="button"
         onClick={toggleChatbot}
-        className="group ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-cyan-200/20 bg-cyan-300 text-slate-950 shadow-[0_0_34px_rgba(34,211,238,0.34)] transition hover:scale-105 hover:bg-cyan-200"
+        className="group ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-cyan-200 bg-cyan-500 text-white shadow-[0_16px_35px_rgba(14,165,233,0.28)] transition hover:scale-105 hover:bg-cyan-400 dark:border-cyan-200/20 dark:bg-cyan-300 dark:text-slate-950 dark:shadow-[0_0_34px_rgba(34,211,238,0.34)] dark:hover:bg-cyan-200"
         aria-label="Open chatbot"
       >
         {isOpen ? <Volume2 className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}

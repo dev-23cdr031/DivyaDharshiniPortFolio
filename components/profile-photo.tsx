@@ -68,7 +68,7 @@ export function ProfilePhoto({
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="w-full h-full"
+            className="relative w-full h-full"
           >
             <Image
               src={src}
