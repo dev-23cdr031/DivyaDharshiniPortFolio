@@ -15,9 +15,9 @@ export function Footer() {
       { label: 'Contact', href: '#contact' },
     ],
     Connect: [
-      { label: 'GitHub', href: 'https://github.com/dev-23cdr031' },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/devdharrshans?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
-      { label: 'Instagram', href: 'https://www.instagram.com/dev_.dharrshan._19?igsh=cjhiZWlzNzl3YjBq' },
+      { label: 'GitHub', href: 'https://github.com/Divya0804Dharshini' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/divyadharshini-subramanian-16a447370/' },
+      { label: 'Instagram', href: 'https://www.instagram.com/_itz_divya_0804?igsh=dHp1bDdmY3lsMzcy' },
       { label: 'Email', href: '#' },
     ],
   }
@@ -40,16 +40,16 @@ export function Footer() {
             {/* Brand */}
             <div className="space-y-4 animate-fade-in-left">
               <Link href="/" className="flex items-center gap-2 group w-fit hover:-translate-y-1 transition-transform duration-300">
-                <span className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 animate-text-glow">DEV DHARRSHAN</span>
+                <span className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 animate-text-glow">DIVYA DHARSHINI</span>
               </Link>
               <p className="text-sm text-muted-foreground max-w-xs leading-relaxed hover:text-foreground transition-colors duration-300 animate-fade-in-up" style={{ animationDelay: '0.05s' }}>
                 Full-stack developer and AI specialist crafting innovative solutions through cutting-edge technology.
               </p>
               <div className="flex gap-3 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                 {[
-                  { href: 'https://github.com/dev-23cdr031', Icon: Github, label: 'GitHub' },
-                  { href: 'https://www.linkedin.com/in/devdharrshans?utm_source=share_via&utm_content=profile&utm_medium=member_android', Icon: Linkedin, label: 'LinkedIn' },
-                  { href: 'mailto:devdharrshan40@gmail.com', Icon: Mail, label: 'Email' },
+                  { href: 'https://github.com/Divya0804Dharshini', Icon: Github, label: 'GitHub' },
+                  { href: 'https://www.linkedin.com/in/divyadharshini-subramanian-16a447370/', Icon: Linkedin, label: 'LinkedIn' },
+                  { href: 'mailto:divyadharshinis3282@gmail.com', Icon: Mail, label: 'Email' },
                 ].map((social, idx) => (
                   <a
                     key={idx}
@@ -94,7 +94,7 @@ export function Footer() {
         <div className="py-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-              &copy; {currentYear} Dev Dharrshan. All rights reserved.
+              &copy; {currentYear} Divya Dharshini. All rights reserved.
             </p>
             <div className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors duration-300 animate-pulse-glow">
               Made with <Heart size={16} className="text-primary animate-heartbeat" /> for the web

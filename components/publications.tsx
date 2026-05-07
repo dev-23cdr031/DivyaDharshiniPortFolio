@@ -43,13 +43,6 @@ const papers: Paper[] = [
     year: '2026',
     link: 'https://ijsci.com/paper-details.php/16695',
   },
-  {
-    id: 5,
-    title: 'TRAVEL WIFI ROUTER',
-    venue: 'AIP CONF',
-    year: '2026',
-    link: 'https://pubs.aip.org/aip/acp/search-results?page=1&q=divyacs.23csd%40kongu.edu&fl_SiteID=1000005',
-  },
 ]
 
 const publicationTitleParts = [

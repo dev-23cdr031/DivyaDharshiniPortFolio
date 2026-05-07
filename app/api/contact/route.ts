@@ -7,7 +7,7 @@ interface ContactPayload {
   message?: string
 }
 
-const recipientEmail = process.env.CONTACT_TO_EMAIL ?? 'devdharrshan40@gmail.com'
+const recipientEmail = process.env.CONTACT_TO_EMAIL ?? 'divyadharshinis3282@gmail.com'
 const fromEmail = process.env.CONTACT_FROM_EMAIL ?? 'Portfolio Contact <onboarding@resend.dev>'
 
 type DeliveryResult = {
@@ -117,7 +117,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           code: 'CONTACT_NOT_CONFIGURED',
-          error: 'Contact email delivery is not configured yet. Add RESEND_API_KEY to send messages to devdharrshan40@gmail.com.',
+          error: 'Contact email delivery is not configured yet. Add RESEND_API_KEY to send messages to divyadharshinis3282@gmail.com.',
         },
         { status: 500 },
       )

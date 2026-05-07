@@ -11,7 +11,7 @@ interface ChatMessage {
 }
 
 const devProfileResponse =
-  'I’m Dev Dharrshan S, a passionate and dedicated aspiring software developer with a strong enthusiasm for web development, modern technologies, and innovative digital solutions. As a Smart India Hackathon (SIH) Finalist, I have gained valuable experience in problem-solving, teamwork, and building impactful technology-driven solutions in competitive environments. I enjoy transforming ideas into interactive and user-friendly applications while continuously strengthening my technical expertise in React, HTML, CSS, Bootstrap, Python, MySQL, and modern UI/UX design. Along with technical knowledge, I possess strong leadership, communication, and collaboration skills, enabling me to work effectively within teams, manage responsibilities confidently, and contribute positively to project development and execution.\n\nI am deeply interested in building technology that creates real-world impact and enhances user experiences. Over time, I have worked on multiple projects ranging from responsive web platforms to innovative solutions such as Hybrid Renewable Energy Orchestration systems and sales data analysis platforms. I believe that combining creativity, consistency, leadership, and technical knowledge is the key to building meaningful digital products. I continuously explore emerging technologies, improve my problem-solving abilities, and challenge myself through innovation, teamwork, and continuous learning. My goal is to grow into a skilled full-stack developer and technology professional who contributes to future-focused projects while creating impactful and inspiring digital experiences.'
+  'I’m Divya Dharshini S, a passionate and dedicated aspiring software developer with a strong enthusiasm for web development, modern technologies, and innovative digital solutions. As a Smart India Hackathon (SIH) Finalist, I have gained valuable experience in problem-solving, teamwork, and building impactful technology-driven solutions in competitive environments. I enjoy transforming ideas into interactive and user-friendly applications while continuously strengthening my technical expertise in React, HTML, CSS, Bootstrap, Python, MySQL, and modern UI/UX design. Along with technical knowledge, I possess strong leadership, communication, and collaboration skills, enabling me to work effectively within teams, manage responsibilities confidently, and contribute positively to project development and execution.\n\nI am deeply interested in building technology that creates real-world impact and enhances user experiences. Over time, I have worked on multiple projects ranging from responsive web platforms to innovative solutions such as Hybrid Renewable Energy Orchestration systems and sales data analysis platforms. I believe that combining creativity, consistency, leadership, and technical knowledge is the key to building meaningful digital products. I continuously explore emerging technologies, improve my problem-solving abilities, and challenge myself through innovation, teamwork, and continuous learning. My goal is to grow into a skilled full-stack developer and technology professional who contributes to future-focused projects while creating impactful and inspiring digital experiences.'
 
 export function EchoChatbot() {
   const [isOpen, setIsOpen] = useState(false)
@@ -54,6 +54,20 @@ export function EchoChatbot() {
     speak(devProfileResponse)
   }
 
+  const toggleChatbot = () => {
+    setIsOpen((current) => {
+      const nextIsOpen = !current
+
+      if (nextIsOpen) {
+        window.setTimeout(() => speak(devProfileResponse), 180)
+      } else if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel()
+      }
+
+      return nextIsOpen
+    })
+  }
+
   return (
     <div className="fixed bottom-5 right-5 z-[70]">
       <AnimatePresence>
@@ -72,7 +86,7 @@ export function EchoChatbot() {
                 </div>
                 <div>
                   <h3 className="text-sm font-black text-white">Dev Chatbot</h3>
-                  <p className="text-xs text-cyan-100/75">Responds with Dev Dharrshan&apos;s profile</p>
+                  <p className="text-xs text-cyan-100/75">Responds with Divya Dharshini&apos;s profile</p>
                 </div>
               </div>
               <button
@@ -136,7 +150,7 @@ export function EchoChatbot() {
 
       <button
         type="button"
-        onClick={() => setIsOpen((current) => !current)}
+        onClick={toggleChatbot}
         className="group ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-cyan-200/20 bg-cyan-300 text-slate-950 shadow-[0_0_34px_rgba(34,211,238,0.34)] transition hover:scale-105 hover:bg-cyan-200"
         aria-label="Open chatbot"
       >

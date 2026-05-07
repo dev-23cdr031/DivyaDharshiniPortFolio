@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram } from 'lucide-react'
 import { AnimatedSection, SectionHeader } from './motion-shell'
 
-const contactEmail = 'devdharrshan40@gmail.com'
+const contactEmail = 'divyadharshinis3282@gmail.com'
 
 export function Contact() {
   const [formState, setFormState] = useState({
@@ -76,13 +76,13 @@ export function Contact() {
     {
       icon: <Phone className="w-6 h-6" />,
       label: 'Phone',
-      value: '+91 9363534589',
-      href: 'tel:+919363534589',
+      value: '+91 63699 66349',
+      href: 'tel:+916369966349',
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       label: 'Location',
-      value: 'Virudhunagar, Tamil Nadu',
+      value: 'Namakkal, Tamil Nadu',
       href: '#',
     },
   ]
@@ -132,9 +132,9 @@ export function Contact() {
               <p className="text-sm font-semibold text-muted-foreground mb-4 animate-text-glow">Follow me</p>
               <div className="flex gap-3">
                 {[
-                  { href: 'https://github.com/dev-23cdr031', label: 'GitHub' },
-                  { href: 'https://www.linkedin.com/in/devdharrshans?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
-                  { href: 'https://www.instagram.com/dev_.dharrshan._19?igsh=cjhiZWlzNzl3YjBq', label: 'Instagram' },
+                  { href: 'https://github.com/Divya0804Dharshini', label: 'GitHub' },
+                  { href: 'https://www.linkedin.com/in/divyadharshini-subramanian-16a447370/', label: 'LinkedIn' },
+                  { href: 'https://www.instagram.com/_itz_divya_0804?igsh=dHp1bDdmY3lsMzcy', label: 'Instagram' },
                 ].map((social, idx) => {
                   const Icon = idx === 0 ? Github : idx === 1 ? Linkedin : Instagram
                   return (

@@ -18,38 +18,27 @@ interface Education {
 const educationData: Education[] = [
   {
     id: 1,
-    course: 'B.E-CSD',
+    course: 'B.E - Computer Science Design',
     institution: 'Kongu Engineering College',
     period: '2023 - 2027',
-    location: 'Erode',
-    score: 'CGPA: 7.64',
+    score: 'CGPA: 8.59 till 5th sem.',
     tag: 'Degree',
   },
   {
     id: 2,
     course: 'HSC',
-    institution: 'KVS Ems (CBSE)',
-    period: '2022 - 2023',
-    location: 'Virudhunagar',
-    score: 'Percentage: 69.4%',
+    institution: 'Little Angels Matric.Hr.Sec.School.',
+    period: '2023',
+    score: 'Percentage: 93.16%',
     tag: 'Higher Secondary',
   },
   {
     id: 3,
-    course: 'SSC',
-    institution: 'KVS Centenary (CBSE)',
-    period: '2020 - 2021',
-    location: 'Virudhunagar',
-    score: 'Percentage: 84.2%',
+    course: 'SSLC',
+    institution: 'Little Angels Matric.Hr.Sec.School.',
+    period: '2021',
+    score: 'Result: Pass',
     tag: 'Secondary',
-  },
-  {
-    id: 4,
-    course: 'JEE Mains',
-    institution: '',
-    period: '2022 - 2023',
-    score: '80 percentile',
-    tag: 'Entrance Exam',
   },
 ]
 
@@ -186,7 +175,7 @@ export function Experience() {
             viewport={{ once: true, margin: '-120px' }}
             transition={{ duration: 0.7, delay: 0.18, ease: 'easeOut' as const }}
           >
-            A timeline of my academic journey and entrance exam achievements.
+            A timeline of my academic journey and qualifications.
           </motion.p>
         </motion.div>
 
@@ -260,7 +249,7 @@ export function Experience() {
 
                       <div className="mt-5 flex items-center gap-2 text-sm text-slate-100">
                         <GraduationCap size={18} className="text-cyan-300 transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-6" />
-                        <span>{item.course === 'JEE Mains' ? 'Entrance examination milestone' : 'Academic qualification'}</span>
+                        <span>Academic qualification</span>
                       </div>
                     </div>
                   </motion.div>

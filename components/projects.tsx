@@ -23,8 +23,8 @@ const projectsData: Project[] = [
     description: 'Developed a responsive web application for hackathons discovery and participation. Enabled users to find hackathons, form teams, and collaborate in real time. Implemented secure user authentication and authorization with real-time search and filtering features to help users discover relevant hackathons.',
     image: '/images/hackconnect-project.png',
     tags: ['React', 'Node.js', 'MongoDB', 'WebSocket'],
-    link: 'https://github.com/dev-23cdr031/hackconnect',
-    github: 'https://github.com/dev-23cdr031/hackconnect',
+    link: 'https://github.com/Divya0804Dharshini/hackconnect',
+    github: 'https://github.com/Divya0804Dharshini/hackconnect',
     featured: true,
   },
   {
@@ -33,18 +33,8 @@ const projectsData: Project[] = [
     description: 'AI-powered role-based dashboard for real-time monitoring and optimization of photovoltaic (PV) system efficiency. Implemented digital twin simulation to model and analyze solar data with optimized battery usage and energy storage management.',
     image: '/images/hybrid-renewable-project.png',
     tags: ['AI/ML', 'Python', 'React', 'IoT Data'],
-    link: 'https://github.com/dev-23cdr031/renewable-energy-system-new',
-    github: 'https://github.com/dev-23cdr031/renewable-energy-system-new',
-    featured: true,
-  },
-  {
-    id: 3,
-    title: 'ShaadisSpot',
-    description: 'Developed a web-based platform for booking marriage halls and catering services online. Enabled users to search, compare, and select venues based on specific capacity and budget with real-time availability checking to avoid double bookings. Integrated secure payment processing for smooth transactions.',
-    image: '/images/shaadispot-project.png',
-    tags: ['Next.js', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
-    link: '#',
-    github: '#',
+    link: 'https://github.com/Divya0804Dharshini/renewable-energy-system-new',
+    github: 'https://github.com/Divya0804Dharshini/renewable-energy-system-new',
     featured: true,
   },
   {
@@ -53,18 +43,8 @@ const projectsData: Project[] = [
     description: 'Integrated AI blockchain-based protocol for identity, non-fencing, and mesh networking for secure and reliable monitoring. Implemented real-time emergency support with panic button feature and voice distress recognition to automatically trigger emergency alerts.',
     image: '/images/smart-tourist-safety-project.png',
     tags: ['React Native', 'Blockchain', 'AI', 'Node.js'],
-    link: 'https://github.com/dev-23cdr031/smart-tourist-police-dashboard',
-    github: 'https://github.com/dev-23cdr031/smart-tourist-police-dashboard',
-    featured: true,
-  },
-  {
-    id: 5,
-    title: 'Cosmic Watch Platform',
-    description: 'Developed a full-stack web platform to monitor Near-Earth Objects (NEOs) in real-time. Integrated real-time object tracking with satellite data integration to visualize asteroid size, velocity, and distance, generating a simplified risk score.',
-    image: '/images/cosmic-watch-platform.png',
-    tags: ['Next.js', 'TypeScript', 'D3.js', 'NASA API'],
-    link: '#',
-    github: '#',
+    link: 'https://github.com/Divya0804Dharshini/smart-tourist-police-dashboard',
+    github: 'https://github.com/Divya0804Dharshini/smart-tourist-police-dashboard',
     featured: true,
   },
 ]
@@ -194,7 +174,7 @@ export function Projects() {
                 </div>
 
                 <div className="flex gap-3">
-                  {project.link !== '#' && !['ShaadisSpot', 'Cosmic Watch Platform'].includes(project.title) && (
+                  {project.link !== '#' && (
                     <Link
                       href={project.link}
                       className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all hover:scale-105 active:scale-95 text-sm animate-fade-in-up duration-300"

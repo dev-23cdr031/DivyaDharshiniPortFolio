@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Activity, Award, Brain, Cloud, Code2, Database, Flame, Medal, Rocket, ShieldCheck, Sparkles, Target, Trophy, X, Zap } from 'lucide-react'
 
 interface Achievement {
@@ -54,162 +54,120 @@ const achievementsData: Achievement[] = [
     category: 'award',
   },
   {
-    id: 5,
-    title: 'IIT Bhubaneswar Hackathon Finals',
-    description: 'Competed in the IIT Bhubaneswar hackathon finals and secured 5th place.',
-    date: '2026',
-    impact: '5th Prize',
-    image: '/images/iit-bhubaneswar-finals-achievement.jpg',
-    category: 'award',
-  },
-  {
-    id: 6,
-    title: 'Hyrup Hackathon',
-    description: 'Selected as a finalist in the Hyrup Hackathon.',
-    date: '2026',
-    impact: 'Finalist',
-    image: '/images/hyrup-hackathon-achievement.jpg',
-    category: 'award',
-  },
-  {
     id: 7,
-    title: 'SIH Finals Certificate',
-    description: 'Participation certificate for the Smart India Hackathon 2025 Grand Finale.',
-    date: '2025',
+    title: 'KPIT Sparkle - Smart Tourist Safety',
+    description: 'Top 100 certificate for the KPIT Sparkle 2026 Pre-Finale round.',
+    date: '2026',
     impact: 'Certificate',
-    image: '/images/sih-finals-certificate.jpg',
+    image: '/images/certificate-kpit-smart-tourist-safety.jpg',
     category: 'certificate',
   },
   {
     id: 8,
-    title: 'KPIT Sparkle Pre-Finals Certificate',
-    description: 'Certificate for reaching the KPIT Sparkle 2026 Pre-Finale round.',
+    title: 'India AI Impact Buildathon',
+    description: 'Certificate of participation in the India AI Impact Buildathon.',
     date: '2026',
     impact: 'Certificate',
-    image: '/images/kpit-sparkle-pre-finals-certificate.jpg',
+    image: '/images/certificate-india-ai-impact-buildathon.jpg',
     category: 'certificate',
   },
   {
     id: 9,
-    title: 'KPIT Sparkle Project 2 Certificate',
-    description: 'Certificate for reaching the KPIT Sparkle 2026 Pre-Finale round with Hybrid Renewable Energy.',
-    date: '2026',
+    title: 'SIH Grand Finale 2025',
+    description: 'Participation certificate for Smart India Hackathon 2025 Grand Finale.',
+    date: '2025',
     impact: 'Certificate',
-    image: '/images/kpit-sparkle-project-2-certificate.jpg',
+    image: '/images/certificate-sih-grand-finale-2025.jpg',
     category: 'certificate',
   },
   {
     id: 10,
-    title: 'NextWave Buildathon - 8th Prize',
-    description: 'National-level certificate for securing 8th position in India at the GenAI Buildathon Grand Finale 2025.',
-    date: '2025',
+    title: 'Hackovium: Vibecraft Edition',
+    description: 'Certificate of participation in the 24-hour Hackovium hackathon.',
+    date: '2026',
     impact: 'Certificate',
-    image: '/images/nextwave-buildathon-8th-prize-certificate.jpg',
+    image: '/images/certificate-hackovium-vibecraft.png',
     category: 'certificate',
   },
   {
     id: 11,
-    title: 'State-Level Buildathon Qualification',
-    description: 'Certificate for qualifying to the State-Level Buildathon in the OpenAI Academy x NxtWave Buildathon.',
-    date: '2025',
+    title: 'Codefest Eureka Event',
+    description: 'Certificate of excellence for outstanding performance at Codefest 2026.',
+    date: '2026',
     impact: 'Certificate',
-    image: '/images/state-level-buildathon-certificate.jpg',
+    image: '/images/certificate-codefest-eureka-iit-bhu.jpg',
     category: 'certificate',
   },
   {
     id: 12,
-    title: 'IIT Bhubaneswar - 5th Prize Certificate',
-    description: 'Certificate for the Web Hackathon conducted by Pravaah 2026 at IIT Bhubaneswar.',
-    date: '2026',
+    title: 'NXT Wave GenAI Buildathon',
+    description: 'Certificate of excellence for participating in the GenAI Buildathon grand finale.',
+    date: '2025',
     impact: 'Certificate',
-    image: '/images/iit-bhubaneswar-5th-prize-certificate.jpg',
+    image: '/images/certificate-nxtwave-genai-individual.jpg',
     category: 'certificate',
   },
   {
     id: 13,
-    title: 'IIT Delhi Startup Finals Certificate',
-    description: 'Certificate of participation in Startup - The Debate 4.0 organized by IIT Delhi.',
-    date: '2026',
+    title: 'NXT Wave GenAI Buildathon Team',
+    description: 'Team certificate of excellence for Kongu Engineering College at the GenAI Buildathon grand finale.',
+    date: '2025',
     impact: 'Certificate',
-    image: '/images/iit-delhi-startup-finals-certificate.jpg',
+    image: '/images/certificate-nxtwave-genai-team.jpg',
     category: 'certificate',
   },
   {
     id: 14,
-    title: 'IIT Varanasi Participation Certificate',
-    description: 'Certificate for outstanding performance in the Eureka event at Codefest 2026, IIT BHU Varanasi.',
-    date: '2026',
+    title: 'State-Level Buildathon Qualification',
+    description: 'Certificate of achievement for qualifying to the State-Level Buildathon.',
+    date: '2025',
     impact: 'Certificate',
-    image: '/images/iit-varanasi-participation-certificate.png',
+    image: '/images/certificate-state-level-buildathon.jpg',
     category: 'certificate',
   },
   {
     id: 15,
-    title: 'National Cloud Innovation Challenge',
-    description: 'Certificate for participating in Phase 3 prototype evaluation of the National Cloud Innovation Challenge by 3SVK.',
+    title: 'KPIT Sparkle - Hybrid Renewable Energy',
+    description: 'Top 100 certificate for the KPIT Sparkle 2026 Pre-Finale round.',
     date: '2026',
     impact: 'Certificate',
-    image: '/images/national-cloud-innovation-challenge-certificate.jpg',
+    image: '/images/certificate-kpit-hybrid-renewable.jpg',
     category: 'certificate',
   },
   {
     id: 16,
-    title: 'HYRUP FixForward Ideathon Finalist',
-    description: 'Certificate of achievement for emerging as a finalist at the HYRUP FixForward Ideathon 2026.',
+    title: 'IJSRET - Smart Tourist Safety',
+    description: 'Publication certificate for the Smart Tourist Safety paper.',
     date: '2026',
     impact: 'Certificate',
-    image: '/images/hyrup-fixforward-certificate.jpg',
+    image: '/images/certificate-ijsret-smart-tourist-safety.jpg',
     category: 'certificate',
   },
   {
     id: 17,
-    title: 'Hackovium: Vibecraft Edition',
-    description: 'Certificate of participation for actively participating in the 24-hour Hackovium: Vibecraft Edition hackathon.',
+    title: 'IJPREMS - HackConnect',
+    description: 'Publication certificate for the HackConnect paper.',
     date: '2026',
     impact: 'Certificate',
-    image: '/images/hackovium-vibecraft-certificate.jpg',
+    image: '/images/certificate-ijprems-hackconnect.jpg',
     category: 'certificate',
   },
   {
     id: 18,
-    title: 'Other CLG Events',
-    description: 'Collection of four certificates from technical symposiums, hackathons, and college-level events.',
+    title: 'IJSCI - Project Originality Checker',
+    description: 'Publication certificate for the AI-Based Project Originality Checker for Resumes paper.',
     date: '2026',
-    impact: 'Events',
-    image: '/images/other-clg-events-certificates.jpg',
+    impact: 'Certificate',
+    image: '/images/certificate-ijsci-originality-checker.jpg',
     category: 'certificate',
   },
   {
     id: 19,
-    title: 'Publication Certificates',
-    description: 'Four publication certificates for AI originality checker, Smart Tourist Safety, SHAADISPOT, and HACKCONNECT.',
-    date: '2026',
-    impact: '4 Certificates',
-    image: '/images/certificate-13-ijsci-originality.png',
-    images: [
-      '/images/certificate-13-ijsci-originality.png',
-      '/images/certificate-13-ijsret-tourist-safety.png',
-      '/images/certificate-13-irjmets-shaadispot.jpg',
-      '/images/certificate-13-ijprems-hackconnect.jpg',
-    ],
-    category: 'certificate',
-  },
-  {
-    id: 20,
-    title: 'India AI Impact Buildathon',
-    description: 'Certificate of participation in the India AI Impact Buildathon conducted at the India AI Impact Summit 2026.',
+    title: 'IRJMETS - ShaadisSpot',
+    description: 'Publication certificate for the ShaadisSpot paper.',
     date: '2026',
     impact: 'Certificate',
-    image: '/images/india-ai-impact-buildathon-certificate.jpg',
-    category: 'certificate',
-  },
-  {
-    id: 21,
-    title: 'Proof of Concept Ideathon',
-    description: 'Certificate of appreciation for winning 2nd prize in the Proof of Concept phase of Ideathon 2025.',
-    date: '2025',
-    impact: '2nd Prize',
-    image: '/images/certificate-15-poc-ideathon-2025.jpg',
+    image: '/images/certificate-irjmets-shaadispot.jpg',
     category: 'certificate',
   },
 ]
@@ -278,28 +236,27 @@ const graphSkillData = [
 ]
 
 const graphMilestones = [
-  { year: '2024', label: 'PoC + Tech Symposiums', value: 38 },
-  { year: '2025', label: 'SIH, KPIT, GenAI, Publications', value: 72 },
-  { year: '2026', label: 'IITs, Cloud, AI Impact, HYRUP', value: 96 },
+  { year: '2024', label: 'PoC 2nd Prize', value: 28 },
+  { year: '2025', label: 'SIH, KPIT, GenAI, Projects', value: 68 },
+  { year: '2026', label: 'KPIT, AI Impact, Codefest, Publications', value: 94 },
 ]
 
 const graphTrendData = [
-  { label: 'Apr 24', value: 34, note: 'CIT Intellina' },
-  { label: 'Oct 24', value: 48, note: 'PSG Srishti' },
-  { label: 'Jan 25', value: 43, note: 'Project grind' },
-  { label: 'Feb 25', value: 62, note: 'Xenviron' },
-  { label: 'Sep 25', value: 56, note: 'HackSpora' },
-  { label: 'Dec 25', value: 78, note: 'SIH + KPIT' },
-  { label: 'Feb 26', value: 70, note: 'AI Impact' },
-  { label: 'Apr 26', value: 88, note: 'IIT + Cloud' },
-  { label: 'May 26', value: 96, note: 'HYRUP + NCIC' },
+  { label: '2024', value: 28, note: 'PoC 2nd Prize' },
+  { label: 'Jan 25', value: 42, note: 'HackConnect' },
+  { label: 'Nov 25', value: 58, note: 'GenAI Buildathon' },
+  { label: 'Dec 25', value: 74, note: 'SIH Finalist' },
+  { label: 'Jan 26', value: 82, note: '4 Publications' },
+  { label: 'Feb 26', value: 88, note: 'AI Impact' },
+  { label: 'Apr 26', value: 91, note: 'Codefest + Hackovium' },
+  { label: '2026', value: 94, note: '13 Certificates' },
 ]
 
 const graphHighlights = [
-  { value: 6, label: 'Award Milestones', detail: 'Finals, prizes, finalist selections', icon: Trophy },
-  { value: 15, label: 'Certificates', detail: 'Participation, publications, college events', icon: ShieldCheck },
-  { value: 5, label: 'Featured Projects', detail: 'AI, full-stack, mobile, cloud systems', icon: Rocket },
-  { value: 4, label: 'Research Signals', detail: 'Publication certificates grouped in portfolio', icon: Target },
+  { value: 4, label: 'Award Milestones', detail: 'SIH, KPIT, GenAI, and PoC achievements', icon: Trophy },
+  { value: 13, label: 'Certificates', detail: 'Auto-sliding showcase of participation and publication certificates', icon: ShieldCheck },
+  { value: 3, label: 'Featured Projects', detail: 'HackConnect, Hybrid Renewable, and Smart Tourist Safety', icon: Rocket },
+  { value: 4, label: 'Publications', detail: 'ShaadisSpot, Smart Tourist Safety, HackConnect, and originality checker', icon: Target },
 ]
 
 function GraphDashboard() {
@@ -340,14 +297,14 @@ function GraphDashboard() {
               </h3>
               <p className="mt-3 text-sm leading-7 text-slate-300/85">
                 A clean up-and-down graph of your progress across college events, hackathons,
-                national challenges, publications, and AI/cloud milestones.
+                national challenges, publications, certificates, and featured projects.
               </p>
             </div>
             <div className="grid grid-cols-3 gap-2 text-center sm:min-w-[360px]">
               {[
                 { value: '2024', label: 'Started' },
-                { value: '+62%', label: 'Growth' },
-                { value: '2026', label: 'Peak' },
+                { value: '24', label: 'Signals' },
+                { value: '2026', label: 'Current' },
               ].map((item) => (
                 <div key={item.label} className="rounded-xl border border-cyan-200/10 bg-slate-950/45 px-3 py-3">
                   <div className="text-lg font-black text-white">{item.value}</div>
@@ -537,15 +494,126 @@ function GraphDashboard() {
   )
 }
 
+function CertificateSlider({
+  certificates,
+  activeIndex,
+  onOpen,
+}: {
+  certificates: Achievement[]
+  activeIndex: number
+  onOpen: (certificate: Achievement) => void
+}) {
+  const certificate = certificates[activeIndex % certificates.length]
+
+  if (!certificate) {
+    return null
+  }
+
+  return (
+    <motion.div
+      className="mx-auto max-w-5xl"
+      variants={containerVariants}
+      key="certificate-slider"
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.article
+        variants={cardVariants}
+        className="relative overflow-hidden rounded-2xl border border-cyan-200/10 bg-gradient-to-br from-white/[0.08] via-white/[0.045] to-blue-950/25 p-4 shadow-[0_28px_110px_rgba(0,0,0,0.38),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl sm:p-6"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(34,211,238,0.18),transparent_42%),radial-gradient(circle_at_92%_110%,rgba(168,85,247,0.14),transparent_42%)]" />
+        <div className="relative z-10">
+          <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <span className="inline-flex rounded-full border border-cyan-200/20 bg-cyan-300/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-cyan-100">
+                Certificate Showcase
+              </span>
+              <h3 className="mt-3 text-2xl font-black text-white sm:text-3xl">{certificate.title}</h3>
+            </div>
+            <div className="text-sm font-semibold text-cyan-100">
+              {activeIndex + 1} / {certificates.length}
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden rounded-2xl border border-cyan-200/10 bg-slate-950/70">
+            <AnimatePresence mode="wait">
+              <motion.button
+                key={certificate.id}
+                type="button"
+                aria-label={`View full ${certificate.title}`}
+                onClick={() => onOpen(certificate)}
+                className="relative block aspect-[16/10] w-full cursor-zoom-in bg-slate-950 focus:outline-none focus:ring-2 focus:ring-cyan-300/70 focus:ring-offset-2 focus:ring-offset-[#070b1f] sm:aspect-[16/9]"
+                initial={{ x: 140, opacity: 0, scale: 0.96 }}
+                animate={{ x: 0, opacity: 1, scale: 1 }}
+                exit={{ x: -140, opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.62, ease: 'easeInOut' as const }}
+              >
+                <Image
+                  src={certificate.image}
+                  alt={certificate.title}
+                  fill
+                  sizes="(min-width: 1024px) 896px, 100vw"
+                  className="object-contain p-2 sm:p-4"
+                  priority={activeIndex === 0}
+                />
+              </motion.button>
+            </AnimatePresence>
+          </div>
+
+          <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-2xl text-sm leading-6 text-slate-300/85">{certificate.description}</p>
+            <button
+              type="button"
+              onClick={() => onOpen(certificate)}
+              className="inline-flex items-center justify-center rounded-xl border border-cyan-300/30 bg-cyan-300/12 px-5 py-3 text-sm font-bold text-cyan-100 shadow-[0_0_22px_rgba(34,211,238,0.14)] transition hover:border-cyan-300/65 hover:bg-cyan-300/20 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-300/70 focus:ring-offset-2 focus:ring-offset-[#070b1f]"
+            >
+              Click to View
+            </button>
+          </div>
+
+          <div className="mt-5 flex justify-center gap-2">
+            {certificates.map((item, index) => (
+              <span
+                key={item.id}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === activeIndex ? 'w-8 bg-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.7)]' : 'w-2 bg-cyan-100/25'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </motion.article>
+    </motion.div>
+  )
+}
+
 export function Achievements() {
   const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]['value']>('award')
   const [selectedCertificate, setSelectedCertificate] = useState<Achievement | null>(null)
+  const [currentCertificateIndex, setCurrentCertificateIndex] = useState(0)
   const filteredAchievements = achievementsData.filter((achievement) => achievement.category === activeFilter)
   const selectedCertificateImages = selectedCertificate?.images?.length
     ? selectedCertificate.images
     : selectedCertificate
       ? [selectedCertificate.image]
       : []
+
+  useEffect(() => {
+    if (activeFilter !== 'certificate') {
+      setCurrentCertificateIndex(0)
+      return
+    }
+
+    if (filteredAchievements.length <= 1) {
+      return
+    }
+
+    const timer = window.setInterval(() => {
+      setCurrentCertificateIndex((index) => (index + 1) % filteredAchievements.length)
+    }, 3000)
+
+    return () => window.clearInterval(timer)
+  }, [activeFilter, filteredAchievements.length])
 
   useEffect(() => {
     if (!selectedCertificate) {
@@ -662,6 +730,12 @@ export function Achievements() {
 
         {activeFilter === 'graph' ? (
           <GraphDashboard />
+        ) : activeFilter === 'certificate' && filteredAchievements.length > 0 ? (
+          <CertificateSlider
+            certificates={filteredAchievements}
+            activeIndex={currentCertificateIndex}
+            onOpen={setSelectedCertificate}
+          />
         ) : (
           <motion.div
             className={`grid grid-cols-1 items-stretch gap-5 lg:gap-6 ${
